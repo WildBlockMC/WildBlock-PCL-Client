@@ -1,370 +1,264 @@
-<!-- 这是 PCL 的主页自定义文件。你可以通过修改这个文件来自定义 PCL 主页：添加文本、打开网页、启动游戏，等等。
-     如果你倒腾这个文件把 PCL 玩炸了，把这个文件直接删除就行了。
-     下列内容均基于 WPF 框架。你可以在继续之前先尝试自学 XAML 与 WPF 的基础，这能让你更轻松地理解下列内容。
-     你也可以使用 Ctrl + F 快速查找。例如，若需要改变文本颜色，则搜索 “颜色” 即可。 -->
-
-<local:MyCard Title="纯文本" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="每个 local:MyCard 代表一张卡片，你可以添加、删除格式类似的 MyCard 来添加多个卡片。每个 TextBlock 代表一段文本，你可以在 Text 属性中书写任何你想写的内容，也可以自行添加更多的 TextBlock。" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontSize="11"
-                    Text="你可以通过添加、删除属性修改样式，例如上一行的 FontSize 就会将字号改为 11 号。" />
-        <TextBlock TextWrapping="Wrap" Margin="20,5,20,0" Foreground="#8C7721"
-                    Text="它还有许多可以调整的属性：上一行的 Margin 调整了边距，Foreground 则会让文字变色。" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="卡片、提示条" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-		<local:MyHint Text="local:MyHint 代表提示条，它默认是警告样式。" />
-		<local:MyHint Margin="0,8,0,2" IsWarn="False"
-                    Text="将提示条的 IsWarn 属性改为 False 即可改为提示样式。&#xA;使用左边的那堆字符可以在任意地方手动换行，如果需要使用等号、引号等特殊字符，可以自行百度 XAML 转义字符。" />
-        <TextBlock TextWrapping="Wrap" Margin="0,6,0,0"
-                    Text="卡片（local:MyCard）的 Title 属性决定了它的标题。&#xA;为卡片添加 CanSwap 属性让它可以被折叠，True 代表是，False 代表否。在此基础上，再使用 IsSwaped 属性调整它是否默认被折叠。" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="长宽属性、图片" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" Width="320" HorizontalAlignment="Right"
-                    Text="任意项目都可以添加 Width 与 Height 属性来控制宽高。HorizontalAlignment 属性可以控制对齐：Center 代表居中，Right 代表居右，例如这段文本就被居右了。" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,6"
-                    Text="Image 代表图片，你需要在它的 Source 属性中填写一个网址或文件路径，它会从该处获取图片并显示。通常需要使用 Height 限制它的高度。" />
-		<Image Height="50" HorizontalAlignment="Center" Source="https://www.mcbbs.net/template/mcbbs/image/logo_sc.png" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="按钮" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="添加 local:MyButton 即可新建一个按钮。你需要限定它的尺寸与位置，并通过 Padding 属性进一步控制它的内边距。" />
-		<local:MyButton Margin="0,4,0,10" Height="35" HorizontalAlignment="Left" Padding="25,0,25,0"
-                    Text="这是一个按钮！一个按钮！" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="你可以修改 ColorType 属性来调整按钮配色：Highlight 代表当前主题色，Red 代表红色。ToolTip 属性还可以让你在鼠标悬浮在上面的时候显示提示文本。" />
-		<local:MyButton Margin="0,4,0,10" Width="250" Height="35" ColorType="Highlight"
-                    Text="把鼠标停在这里别动……" ToolTip="……就能看到这句话！" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="local:MyTextButton 是没有边框的 “纯文本按钮”，其作用与 local:MyButton 一致。" />
-		<local:MyTextButton Margin="0,8,0,10" HorizontalAlignment="Center"
-                    Text="一个精简版的文本按钮" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="按钮可以做到很多事，具体将在 “事件” 部分介绍。" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="事件 1：打开网页、弹出窗口" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="将按钮的 EventType 属性设为 打开网页，然后在 EventData 属性中写入网址，即可通过点击按钮打开网页。" />
-		<local:MyButton Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0"
-                    Text="打开 MCBBS" EventType="打开网页" EventData="https://www.mcbbs.net/" />
-        <TextBlock TextWrapping="Wrap" Margin="0,10,0,10"
-                    Text="或者将 EventType 属性改为 弹出窗口，然后在 EventData 属性中写入弹窗的标题与内容……" />
-		<local:MyButton Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0"
-                    Text="显示一个弹窗" EventType="弹出窗口" EventData="这是标题|标题与内容以竖线间隔。\n你也可以直接在其中换行。" />
-        <TextBlock TextWrapping="Wrap" Margin="0,10,0,0"
-                    Text="local:MyTextButton 同样可以设置 EventType 与 EventData 让它具有特定功能。" />
-		<local:MyTextButton Margin="0,8,0,0" HorizontalAlignment="Center"
-                    Text="点击打开知乎" EventType="打开网页" EventData="https://www.zhihu.com/" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="事件 2：启动游戏" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="将 EventType 设置为 启动游戏，EventData 设置为具体的游戏版本，即可通过点击按钮启动游戏。如果当前游戏文件夹没有该版本，则无法启动。" />
-		<local:MyButton Margin="0,4,0,10" Width="250" Height="35"
-                    Text="启动 Minecraft 1.12.2" EventType="启动游戏" EventData="1.12.2" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="在 EventData 后面添加一条竖线（|），竖线后填写服务器 IP，即可在启动该版本的同时自动进入服务器。" />
-		<local:MyButton Margin="0,4,0,0" Width="250" Height="35"
-                    Text="启动 1.12.2 并进入 Hypixel" EventType="启动游戏" EventData="1.12.2|mc.hypixel.net" ToolTip="服务器 IP：mc.hypixel.net" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="事件 3：打开文件" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="将 EventType 设置为 打开文件，EventData 设置为文件路径，即可点击打开特定文件或启动程序。" />
-		<local:MyButton Margin="0,4,0,8" Width="200" Height="35"
-                    Text="打开记事本" EventType="打开文件" EventData="notepad.exe" />
-        <TextBlock TextWrapping="Wrap" Margin="0,4,0,0"
-                    Text="如果能在 PCL 文件夹中找到该文件，则会优先打开 PCL 文件夹中的文件。当然，你可以使用例如 C:\ 开头的绝对路径。" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="此外，PCL 会将文件中的 “花括号 path” 替换为 PCL 可执行文件所在文件夹（{path}），可以用于执行特定程序或加载图片。" />
-		<local:MyButton Margin="0,4,0,10" Width="200" Height="35"
-                    Text="打开 PCL 日志" EventType="打开文件" EventData="Log1.txt" ToolTip="PCL 的日志文件就在 PCL 文件夹内，且名为 Log1.txt" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="就像为游戏指定服务器 IP 一样，你也可以在 EventData 的竖线后为程序添加启动参数。" />
-		<local:MyButton Margin="0,4,0,0" Width="200" Height="35"
-                    Text="定位游戏启动脚本" EventType="打开文件" EventData="explorer.exe|/select,LatestLaunch.bat" ToolTip="PCL 会将上一次启动 MC 的脚本保存在 PCL 文件夹内，且名为 LatestLaunch.bat。&#xA;点击按钮会打开文件管理器，并且借助参数要求它选中这个文件。" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="事件 4：其他事件类型" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-		<TextBlock Margin="0,4,0,6" FontWeight="Bold"
-                    Text="EventType 共有以下种类：" />
-		<TextBlock Margin="0,0,0,4"
-                    Text="· 打开网页、启动游戏、打开文件：已在上方的卡片中介绍" />
-		<local:MyButton Margin="0,5,0,6" Width="250" Height="35"
-                    Text="查看 PCL 源代码" EventType="打开网页" EventData="https://github.com/Hex-Dragon/PCL2/blob/main/Plain%20Craft%20Launcher%202/FormMain.xaml.vb"/>
-		<TextBlock Margin="0,0,0,4"
-                    Text="· 今日人品、清理垃圾、内存优化、安装整合包：触发对应功能" />
-		<TextBlock Margin="0,0,0,4"
-                    Text="· 复制文本：将 EventData 中的内容复制到剪贴板" />
-		<TextBlock Margin="0,0,0,4"
-                    Text="· 刷新主页：点击重新加载主页。如果主页文件为联网更新，这会重新下载主页内容" />
-		<TextBlock Margin="0,0,0,4"
-                    Text="· 下载文件：在点击时要求选择文件保存位置，并且下载 EventData 的链接中的文件" />
-		<local:MyButton Margin="0,5,0,6" Width="250" Height="35"
-                    Text="下载 MCBBS 的 Logo" EventType="下载文件" EventData="https://www.mcbbs.net/template/mcbbs/image/logo_sc.png" />
-		<TextBlock Margin="0,4,0,4"
-                    Text="· 打开帮助：跳转到 EventData 对应的帮助文件（输入相对 Help 文件夹的路径）"/>
-		<local:MyButton Margin="0,5,0,6" Width="250" Height="35"
-                    Text="打开自定义帮助页面" EventType="打开帮助" EventData="帮助/自定义帮助.json"/>
-		<TextBlock Margin="0,4,0,4"
-                    Text="· 切换页面：强制切换到 PCL 的某一页面（尝试切换到不太对头的页面会出现不可预知的 Bug，使用时请谨慎）&#xa;  　　　　　EventData 为 页面种类|次要页面种类（PageType|PageSubType，例如 1|1）&#xa;  　　　　　点击上方的 查看 PCL 源代码 按钮，在 1000 行左右的位置即可查找到对应数值"/>
-		<local:MyButton Margin="0,5,0,6" Width="250" Height="35"
-                    Text="切换到下载页面" EventType="切换页面" EventData="1|1"/>
-		<local:MyButton Margin="0,5,0,6" Width="250" Height="35"
-                    Text="切换到启动器设置" EventType="切换页面" EventData="3|2"/>
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="StackPanel 横向布局" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="你需要使用 StackPanel 在一行里塞下多个按钮。你可以仅在这个教学卡片的基础上稍作调整，来实现自己的按钮布局。" />
-		<!-- 这是第一行 -->
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-			<local:MyButton Margin="0,0,10,0" Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0" ColorType="Highlight"
-                        Text="打开 B 站" EventType="打开网页" EventData="https://www.bilibili.com/" />
-			<local:MyButton Margin="0,0,10,0" Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0"
-                        Text="进入 Hypixel" EventType="启动游戏" EventData="1.16.3|mc.hypixel.net" ToolTip="使用 Minecraft 1.16.3 进入 Hypixel" />
-			<local:MyButton Margin="0,0,10,0" Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0"
-                        Text="打开画图" EventType="打开文件" EventData="mspaint.exe" />
-		</StackPanel>
-		<!-- 这是第二行 -->
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-			<local:MyButton Margin="0,0,10,0" Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0" ColorType="Red"
-                        Text="复制召唤命令" EventType="复制文本" EventData="/execute as @a at @s run summon Creeper ~ ~2 ~" ToolTip="这条 Minecraft 命令会在每个玩家头顶召唤一只苦力怕！" />
-			<local:MyButton Margin="0,0,10,0" Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0"
-                        Text="内存优化" EventType="内存优化" />
-			<local:MyButton Margin="0,0,10,0" Width="140" Height="35" HorizontalAlignment="Left" Padding="13,0,13,0"
-                        Text="下载作者的头像" EventType="下载文件" EventData="https://www.mcbbs.net/uc_server/data/avatar/000/14/51/06_avatar_small.jpg?ts=1471402592" />
-		</StackPanel>
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="列表项 1：基础" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="你也可以使用列表项 “local:MyListItem” 来替代按钮，其使用方式与按钮类似。" />
-		<local:MyListItem  Margin="-5,2,-5,8"
-		            Logo="https://www.baidu.com/favicon.ico" Title="百度" Info="百度一下，你就知道！"
-		            EventType="打开网页" EventData="https://www.baidu.com/" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="Logo 属性为列表项的图标，指定的可以是链接也可以是文件路径；Title 是大标题，Info 是可选的小标题（详细信息）；Type 如果省略，该列表项则单纯只展示信息，仅当 Type 为 Clickable 才能触发点击效果。"/>
-		<local:MyListItem Margin="-5,2,-5,8"
-                    Logo="pack://application:,,,/images/Blocks/Grass.png"
-		            EventType="打开帮助" EventData="帮助/自定义帮助.json" Type="Clickable" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="EventType、EventData 与按钮几乎一致，唯一不同的是，列表项不支持联网加载帮助文件。" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="列表项 2：内置图片" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="PCL 内置了一些 Minecraft 方块与物品图片，可以直接使用。"/>
-		<StackPanel Orientation="Horizontal" Margin="10,8,0,15" Height="30">
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/CommandBlock.png"/>
-			<!-- 命令方块 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/Cobblestone.png"/>
-			<!-- 圆石 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/GoldBlock.png"/>
-			<!-- 金块 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/Grass.png"/>
-			<!-- 草方块 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/GrassPath.png"/>
-			<!-- 草径 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/Anvil.png"/>
-			<!-- 铁砧 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/RedstoneBlock.png"/>
-			<!-- 红石块 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/RedstoneLampOn.png"/>
-			<!-- 红石灯（亮） -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/RedstoneLampOff.png"/>
-			<!-- 红石灯（灭） -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/Egg.png"/>
-			<!-- 鸡蛋 -->
-			<Image Width="30" Margin="5,0,0,0" Source="pack://application:,,,/images/Blocks/Fabric.png"/>
-			<!-- 布料（Fabric 图标） -->
-		</StackPanel>
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="使用时，将上方对应行的 Source 复制到 MyListItem 的 Logo 属性处即可。"/>
-		<local:MyListItem Margin="-5,0,-5,8"
-            Logo="pack://application:,,,/images/Blocks/CommandBlock.png"
-            Title="清理垃圾" Info="使用内置的命令方块图片作为 Logo" EventType="清理垃圾" Type="Clickable" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="主题色" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,15"
-                    Text="你可以用类似 {DynamicResource ColorBrush5} 的格式使用 PCL 当前的主题颜色，修改末尾的数字编号以改变颜色浓度。" />
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="8,4">
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 1 " Margin="5,0" Background="{DynamicResource ColorBrush1}" Foreground="#FFFFFF" />
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 2 " Margin="5,0" Background="{DynamicResource ColorBrush2}" Foreground="#FFFFFF" />
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 3 " Margin="5,0" Background="{DynamicResource ColorBrush3}" Foreground="#FFFFFF" />
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 4 " Margin="5,0" Background="{DynamicResource ColorBrush4}" Foreground="#FFFFFF" />
-		</StackPanel>
-		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="8,4">
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 5 " Margin="5,0" Background="{DynamicResource ColorBrush5}" />
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 6 " Margin="5,0" Background="{DynamicResource ColorBrush6}" />
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 7 " Margin="5,0" Background="{DynamicResource ColorBrush7}" />
-            <TextBlock TextWrapping="Wrap" Text=" 浓度 8 " Margin="5,0" Background="{DynamicResource ColorBrush8}" />
-		</StackPanel>
-		<TextBlock Margin="0,15,0,8" Foreground="{DynamicResource ColorBrush2}" Background="{DynamicResource ColorBrush6}"
-                    Text="除了字体颜色，你也可以将主题色用于背景色、边框颜色等颜色参数。例如这行字的颜色为浓度 2，背景为浓度 6。" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="替换标记" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="在花括号 {} 中写入特定内容，PCL 会在加载时对其进行替换。&#xa;例如，path 会被替换为 PCL 可执行文件所在文件夹（{path}），用于在 EventData 中指定特定文件，或是加载图片。" />
-		<local:MyHint Margin="0,6,0,10" Text="以下特性于 PCL 2.6.5 (299) 加入，不适用于更早版本的 PCL。" IsWarn="False" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="你也可以使用替换标记来获取随机内容：cave 会被替换为一条随机的回声洞内容，hint 则是 “你知道吗” 的内容。" />
-		<TextBlock TextWrapping="Wrap" Margin="10,6,0,5" Foreground="{DynamicResource ColorBrush3}"
-                    Text="你知道吗：{hint}" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="进阶：Grid 布局" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="如果要实现更复杂的布局，则必须使用 Grid。Grid 可以让按钮们自动适应窗口宽度：随意拉伸 PCL 窗口，按钮大小会自动改变。" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="你可以上网查找 “WPF Grid” 的相关教程，这里仅给出一个例子，不作详细介绍。你可以仅在这个教学卡片的基础上稍作调整，来实现自己的按钮布局。" />
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="1*" />
-				<ColumnDefinition Width="1.6*" MinWidth="200" />
-				<!-- 第二个按钮的宽度是第一个按钮的 1.6 倍，且至少为 200 -->
-				<ColumnDefinition Width="150" />
-				<!-- 如果不打 *，则会占用固定的宽度，也可以写 Auto 来自适应 -->
-			</Grid.ColumnDefinitions>
-			<!-- 为按钮添加 Grid.Column 属性指定它所在的列，不要添加 Width 与 HorizontalAlignment 属性 -->
-			<local:MyButton Grid.Column="0" Margin="0,0,10,0" Height="35" ColorType="Highlight"
-                        Text="打开 B 站" EventType="打开网页" EventData="https://www.bilibili.com/" />
-			<local:MyButton Grid.Column="1" Margin="0,0,10,0" Height="35"
-                        Text="进入 Hypixel" EventType="启动游戏" EventData="1.16.3|mc.hypixel.net" ToolTip="使用 Minecraft 1.16.3 进入 Hypixel" />
-			<local:MyButton Grid.Column="2" Margin="0,0,10,0" Height="35"
-                        Text="打开画图" EventType="打开文件" EventData="mspaint.exe" />
-		</Grid>
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="进阶：图标按钮" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-		<local:MyHint Margin="0,0,0,10" Text="以下特性于 PCL 2.6.5 (299) 加入，不适用于更早版本的 PCL。" IsWarn="False" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="MyIconTextButton 是一种带有自定义矢量图标的按钮变体，它同样支持 EventType 与 EventData 属性。&#xa;通过设置 Logo 属性来控制它的图标，设置 LogoScale 属性还可以调整图标的缩放比例。" />
-		<local:MyIconTextButton Margin="0,4,0,8" Height="35" HorizontalAlignment="Center"
-                    Text="查看 SVG Path 简介" EventType="打开网页" EventData="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths"
-                    LogoScale="1.02" Logo="M1091 0H78C35 0 0 35 0 78v863c0 43 35 78 78 78H1091c43 0 78-35 78-78V78C1170 35 1134 0 1091 0z m-8 87v78H87v-78h994zM87 933V254h994v679H87v0zM724 340l-206 547a43 43 0 0 1-82-31l206-547a43 43 0 0 1 82 30zM369 545l-85 85 85 85a43 43 0 0 1-62 62l-116-116a43 43 0 0 1 0-62l116-116a43 43 0 0 1 62 61z m610-37a43 43 0 0 1 0 62l-116 116a43 43 0 0 1-62 0 43 43 0 0 1 0-62l85-85-85-85a43 43 0 0 1 62-62l116 116z" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="Logo 属性的内容是 SVG Path 的值，你需要使用 SVG 编辑器或者从图标资源网站（如 IconFont）查找它。不要自己写，写不懂的。&#xa;此外，它还有两种 ColorType：Black（默认）和 Highlight。" />
-		<local:MyIconTextButton Margin="0,4,0,8" Height="35" HorizontalAlignment="Center"
-                    ColorType="Highlight" Text="打开 IconFont" EventType="打开网页" EventData="https://www.iconfont.cn/"
-                    LogoScale="1" Logo="M510 959c-51-31-40-86-74-120-61-63-168-66-231-138C-5 457 196 3 593 70c231 39 407 363 250 592-67 98-198 106-277 213-23 23-11 81-55 83zM176 432c-9 176 240 167 240 9 0-80-72-145-166-111-66 23-71 49-74 101z m509 129c212 59 217-307 0-231-102 36-90 206 0 231z m-213 111c33 7 44-91 9-92-19 19-64 79-9 92z m83 0H575c23-37-8-87-46-92 3 37-11 92 27 92z" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="如果只想要图标，不要文字，还可以使用 MyIconButton。它不能设置 Text 属性，只有一个图标可以按。&#xa;它的 Theme 属性可以设置为 Color（默认）、White、Black、Red。" />
-		<local:MyIconButton Margin="0,4,0,0" Width="25" Height="25" HorizontalAlignment="Center"
-                    Theme="Black" EventType="弹出窗口" EventData="事件|MyIconButton 当然也支持 EventType 和 EventData——要不然介绍它干啥？"
-                    LogoScale="1" Logo="M149 873c47 47 101 83 162 109 63 26 130 40 199 40 69 0 136-13 199-40 61-25 115-62 162-109s83-101 109-162c26-63 40-130 40-199 0-69-13-136-40-199-25-61-62-115-109-162-46-46-101-83-162-109C648 13 580 0 511 0s-136 13-199 40c-61 25-115 62-162 109s-83 101-109 162C13 375 0 442 0 511s13 136 40 199c25 61 62 115 109 162zM97 511c0-228 185-414 414-414 228 0 414 185 414 414S740 926 511 926c-228 0-414-185-414-414z M539 244c-8-4-17-7-27-7-9 0-19 2-27 7-16 9-27 27-27 47 0 30 24 54 54 54 30 0 54-24 54-54 0-19-10-37-27-47zM566 732v-284c0-30-24-54-54-54-30 0-54 24-54 54v284c0 30 24 54 54 54 30 0 54-24 54-54z" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                    Text="如果只想显示一个图标，不想让它是能按的按钮，可以使用 WPF 自带的 Path 等绘图控件，感兴趣的话可以自行搜索。想偷懒也可以把 MyIconButton 的 IsHitTestVisible 属性改为 False……" />
-		<Path Margin="0,4,0,0" Width="20" Height="20" HorizontalAlignment="Center"
-                    Stretch="Uniform" Fill="{DynamicResource ColorBrush1}"
-                    Data="M149 873c47 47 101 83 162 109 63 26 130 40 199 40 69 0 136-13 199-40 61-25 115-62 162-109s83-101 109-162c26-63 40-130 40-199 0-69-13-136-40-199-25-61-62-115-109-162-46-46-101-83-162-109C648 13 580 0 511 0s-136 13-199 40c-61 25-115 62-162 109s-83 101-109 162C13 375 0 442 0 511s13 136 40 199c25 61 62 115 109 162zM97 511c0-228 185-414 414-414 228 0 414 185 414 414S740 926 511 926c-228 0-414-185-414-414z M539 244c-8-4-17-7-27-7-9 0-19 2-27 7-16 9-27 27-27 47 0 30 24 54 54 54 30 0 54-24 54-54 0-19-10-37-27-47zM566 732v-284c0-30-24-54-54-54-30 0-54 24-54 54v284c0 30 24 54 54 54 30 0 54-24 54-54z" />
-	</StackPanel>
-</local:MyCard>
-
-<local:MyCard Title="进阶：联网自定义主页" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
-	<StackPanel Margin="25,40,23,15">
-		<local:MyHint Margin="0,0,0,10" Text="以下特性于 PCL 2.6.5 (299) 加入，不适用于更早版本的 PCL。" IsWarn="False" />
-		<TextBlock TextWrapping="Wrap" Margin="0,0,0,10"
-                    Text="如果你在尝试制作联网更新的自定义主页，可以查看下方的 GitHub 讨论页。&#xa;你可以根据其中的介绍为主页添加版本号检查以节省流量，也可以通过检查 Referer 和 User Agent 来确定对方的 PCL 版本。" />
-		<local:MyButton Margin="0,0,0,8" Height="35" HorizontalAlignment="Center" Padding="20,0,20,0"
-                    Text="打开 GitHub 讨论页" EventType="打开网页" EventData="https://github.com/Hex-Dragon/PCL2/discussions/2528" />
-	</StackPanel>
-</local:MyCard>
-
-<!-- 
-
-全部通用的属性：
- - Width、Height：设置宽度与高度
- - ToolTip：设置鼠标指向时的提示文本
- - Margin：调整外边距（格式为 左,上,右,下。例如 Margin="0,0,0,2" 即为 2 单位的下边距）
- - HorizontalAlignment：设置横向对齐方式，居左：Left、居中：Center、居右：Right、拉伸（默认）：Stretch
- - VerticalAlignment：设置纵向对齐方式，居上：Top、居中：Center、居下：Bottom、拉伸（默认）：Stretch
- - IsHitTestVisible：该控件是否响应交互（点击、指向动画等），True 为是（默认），False 为否
-
-TextBlock（纯文本）：
- - Text：设置显示的文本（如果要使用引号等特殊字符，自行百度 XAML 转义）
- - TextWrapping：开启自动换行
- - FontSize：设置字号
- - FontWeight：设置为 Bold 时，文字加粗
- - Foreground：调整前景颜色（十六进制字符串，例如 #FF010203 代表 ARGB 中的 255,1,2,3。前两位代表不透明度，FF 为全不透明，00 为全透明）
-
-Image（图片）：
- - Source：要显示的图片的网址，或 PCL 内置图片位置
-
-local:MyCard（卡片）：
- - Title：设置显示的标题文本
- - CanSwap：卡片是否可以折叠，True 为是，False 为否
- - IsSwaped：卡片是否默认折叠，要求 CanSwap 必须为 True
- - HorizontalAlignment：若使用，要求 CanSwap 必须为 False
- - UseAnimation：是否在展开等高度改变时触发动画，True 为是（默认），False 为否
- - SwapLogoRight：卡片折叠时的箭头是朝下还是朝右，True 为朝右，False 为朝下（默认）
- - HasMouseAnimation：是否在鼠标指向时改变卡片颜色，True 为是（默认），False 为否
-
-local:MyHint（提示条）：
- - Text：设置显示的文本（&#xA; 代表换行）
- - IsWarn：设置为 True 代表警告样式，False 代表提示样式
-
-local:MyButton（按钮）：
- - Text：设置显示的文本
- - Padding：设置内边距，格式与 Margin 一致
- - ColorType：设置颜色主题（Highlight 为当前启动器的主题颜色，Red 为红色，默认为黑色）
- - EventType、EventData：触发特定事件
-
-local:MyTextButton（文本按钮）：
- - Text：设置显示的文本
- - EventType、EventData：触发特定事件
-
-local:MyListItem（列表项）：
- - Logo：列表项的图标（所指定的可以是链接也可以是文件路径）
- - Title：列表项的大标题
- - Info：列表项的详细信息，它将会以灰色显示在大标题下方
- - Type：若留空仅单纯展示信息，设置为 Clickable 触发相应活动
-
-local:MyIconTextButton（带图标的按钮）：
- - Text：设置显示的文本
- - Logo：设置显示的图标
- - LogoScale：设置图标的缩放，默认为 1
- - ColorType：设置颜色主题（Highlight 为当前启动器的主题颜色，默认为黑色）
- - EventType、EventData：触发特定事件
-
-local:MyIconButton（图标按钮）：
- - Logo：设置显示的图标
- - LogoScale：设置图标的缩放，默认为 1
- - Theme：设置颜色主题，Color（默认）为当前启动器的主题颜色，也可设置为 White、Black、Red
- - EventType、EventData：触发特定事件
-
--->
+<StackPanel>
+  <StackPanel Margin="0,-10,0,0">
+    <!--Animations Starts-->
+    <StackPanel.Triggers>
+      <EventTrigger RoutedEvent="StackPanel.Loaded">
+        <BeginStoryboard>
+          <Storyboard x:Name="animation1" RepeatBehavior="Forever">
+            <ColorAnimation Storyboard.TargetName="NewsHint" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" From="#FF000000" To="#FF000000" Duration="0:0:0" />
+            <ColorAnimation BeginTime="0:0:5" Storyboard.TargetName="NewsHint" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" From="#FF000000" To="#00000000" Duration="0:0:1" />
+            <ColorAnimation BeginTime="0:0:13" Storyboard.TargetName="NewsHint" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" From="#00000000" To="#FF000000" Duration="0:0:1" />
+            <ColorAnimation Storyboard.TargetName="Hint2" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" From="#00000000" To="#00000000" Duration="0:0:0" />
+            <ColorAnimation BeginTime="0:0:6" Storyboard.TargetName="Hint2" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" From="#00000000" To="#FF000000" Duration="0:0:1" />
+            <ColorAnimation BeginTime="0:0:12" Storyboard.TargetName="Hint2" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" From="#FF000000" To="#00000000" Duration="0:0:1" />
+          </Storyboard>
+        </BeginStoryboard>
+      </EventTrigger>
+    </StackPanel.Triggers>
+    <!--Animations Ends-->
+    <StackPanel.Resources>
+      <!--Template Starts-->
+      <!--Template Ends-->
+      <!--Styles Starts-->
+      <!--即将弃用-->
+      <Style TargetType="Ellipse">
+        <Setter Property="Fill" Value="{DynamicResource ColorBrush3}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Height" Value="8" />
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Margin" Value="0,0,10,0" />
+      </Style>
+      <Style TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="Black" />
+      </Style>
+      <Style x:Key="PGTextBlock" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Margin" Value="25,5,0,5" />
+        <Setter Property="FontSize" Value="16" />
+      </Style>
+      <Style x:Key="ListItem" TargetType="TextBlock">
+        <Setter Property="Margin" Value="10,-13.5,5,15" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="Black" />
+      </Style>
+      <Style x:Key="ListItemLink" TargetType="local:MyTextButton">
+        <Setter Property="Margin" Value="15,-15,5,15" />
+        <Setter Property="TextElement.FontSize" Value="20" />
+      </Style>
+      <Style x:Key="ListStyle" TargetType="StackPanel">
+        <Setter Property="Margin" Value="22,0,14,5" />
+      </Style>
+      <Style x:Key="Read" TargetType="local:MyButton">
+        <Setter Property="Margin" Value="0,0,5,5" />
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Padding" Value="13,0,13,0" />
+        <Setter Property="EventType" Value="打开网页" />
+      </Style>
+      <Style x:Key="Read0" TargetType="local:MyButton" BasedOn="{StaticResource Read}">
+        <Setter Property="Grid.Column" Value="0" />
+        <Setter Property="Text" Value="Minecraft Wiki" />
+        <!--<Setter Property="ColorType" Value="Highlight"/>-->
+      </Style>
+      <Style x:Key="Read0+" TargetType="local:MyButton" BasedOn="{StaticResource Read0}">
+        <Setter Property="Grid.Row" Value="0" />
+        <Setter Property="Grid.ColumnSpan" Value="3" />
+      </Style>
+      <Style x:Key="Read1" TargetType="local:MyButton" BasedOn="{StaticResource Read}">
+        <Setter Property="Grid.Column" Value="1" />
+        <Setter Property="Text" Value="MCBBS" />
+      </Style>
+      <Style x:Key="Read1+" TargetType="local:MyButton" BasedOn="{StaticResource Read1}">
+        <Setter Property="Grid.Column" Value="0" />
+        <Setter Property="Grid.Row" Value="1" />
+      </Style>
+      <Style x:Key="Read2" TargetType="local:MyButton" BasedOn="{StaticResource Read}">
+        <Setter Property="Grid.Column" Value="2" />
+        <Setter Property="Text" Value="官网" />
+      </Style>
+      <Style x:Key="Read2+" TargetType="local:MyButton" BasedOn="{StaticResource Read2}">
+        <Setter Property="Grid.Column" Value="1" />
+        <Setter Property="Grid.Row" Value="1" />
+      </Style>
+      <Style x:Key="ReadR" TargetType="local:MyButton" BasedOn="{StaticResource Read}">
+        <Setter Property="Grid.Column" Value="3" />
+        <Setter Property="Text" Value="Reddit" />
+      </Style>
+      <Style x:Key="ReadR+" TargetType="local:MyButton" BasedOn="{StaticResource ReadR}">
+        <Setter Property="Grid.Column" Value="2" />
+        <Setter Property="Grid.Row" Value="1" />
+      </Style>
+      <Style x:Key="Code" TargetType="Border">
+        <Setter Property="Background" Value="#e0e0e0" />
+        <Setter Property="BorderBrush" Value="#444" />
+        <Setter Property="CornerRadius" Value="1" />
+        <Setter Property="Margin" Value="5,0,5,0" />
+        <Setter Property="BorderThickness" Value="1" />
+      </Style>
+      <Style TargetType="TextBox">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="Padding" Value="3,0,3,0" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+      </Style>
+      <Style x:Key="verImgBdr" TargetType="Border">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="4" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ColorBrush3}" />
+        <Setter Property="CornerRadius" Value="7" />
+        <Setter Property="MaxHeight" Value="200" />
+      </Style>
+      <Style x:Key="verTxtBlk" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{DynamicResource ColorBrush7}" />
+        <Setter Property="Width" Value="180" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="FontSize" Value="20" />
+      </Style>
+      <Style x:Key="imgTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#FF777777" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,15" />
+      </Style>
+      <Style x:Key="verTxtBdr" TargetType="Border">
+        <Setter Property="Margin" Value="0,-20,-1,10" />
+        <Setter Property="Background" Value="{DynamicResource ColorBrush3}" />
+        <Setter Property="Width" Value="190" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="BorderThickness" Value="0,0,0,3" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ColorBrush2}" />
+      </Style>
+      <!--h2-->
+      <Style x:Key="h2" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Padding" Value="15,5" />
+        <Setter Property="Margin" Value="5,15,5,10" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{DynamicResource ColorBrush3}" />
+      </Style>
+      <!--h3-->
+      <Style x:Key="h3" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Padding" Value="30,0" />
+        <Setter Property="Margin" Value="-10,0,10,17" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{DynamicResource ColorBrush4}" />
+      </Style>
+      <!--h4-->
+      <Style x:Key="h4" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Padding" Value="30,0" />
+        <Setter Property="Margin" Value="5,0,10,10" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{DynamicResource ColorBrush4}" />
+      </Style>
+      <!--footnote-->
+      <Style x:Key="footnote" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Padding" Value="30,0" />
+        <Setter Property="Margin" Value="0,20,0,15" />
+        <Setter Property="Foreground" Value="#FF777777" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+      </Style>
+      <!--ButtonNameBorder-->
+      <!--ImageButtonStyle-->
+      <Style x:Key="ImgBtnImg" TargetType="Image">
+        <Setter Property="MaxWidth" Value="70px" />
+        <Setter Property="MaxHeight" Value="70px" />
+        <Setter Property="Margin" Value="3" />
+      </Style>
+      <Style x:Key="ImgBtnBdr" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource ColorBrush7}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ColorBrush3}" />
+        <Setter Property="BorderThickness" Value="2px" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Margin" Value="2px" />
+      </Style>
+      <Style x:Key="NameBdr" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource ColorBrush3}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="5,5,0,0" />
+        <Setter Property="Margin" Value="-2,-2,-2,2" />
+      </Style>
+      <Style x:Key="ImgBtnTxt" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Grid.Row" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource ColorBrush7}" />
+        <Setter Property="FontSize" Value="12px" />
+        <Setter Property="Margin" Value="8px,2px" />
+      </Style>
+      <!-- TEMPLATES -->
+      <ControlTemplate x:Key="Separator" TargetType="ContentControl">
+        <Grid Margin="0,0,0,15">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="1*" />
+          </Grid.ColumnDefinitions>
+          <Line X1="0" X2="100" Stroke="{DynamicResource ColorBrush5}" StrokeThickness="1.5" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="0" />
+          <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" FontSize="14" Foreground="{DynamicResource ColorBrush5}" Grid.Column="1" VerticalAlignment="Center" />
+          <Line X1="0" X2="100" Stroke="{DynamicResource ColorBrush5}" StrokeThickness="1.5" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="2" />
+        </Grid>
+      </ControlTemplate>
+    </StackPanel.Resources>
+    <Border Margin="0,0,0,10" Padding="2,8" BorderThickness="1" Background="{DynamicResource ColorBrush5}" CornerRadius="5" VerticalAlignment="Top" BorderBrush="{DynamicResource ColorBrush3}" Opacity="0.7">
+      <Grid Margin="10,0,0,0">
+        <TextBlock x:Name="NewsHint" FontWeight="Bold" FontSize="12" VerticalAlignment="Center" Foreground="#FF000000">
+                ⚠️ "Wild Block Client" 是 MCJE 低规则生存服务器 "Wild Block" の PCL2 修改后客户端
+    </TextBlock>
+        <TextBlock x:Name="Hint2" FontWeight="Bold" FontSize="12" VerticalAlignment="Center" Foreground="#00000000">
+                ⚠️ "Wild Block Client" 是 MCJE 低规则生存服务器 "Wild Block" の PCL2 修改后客户端
+    </TextBlock>
+      </Grid>
+    </Border>
+    <local:MyCard Margin="0,0,0,15" Title="📢 主页如出现问题请在 Github 上交 Issue">
+      <StackPanel Margin="30,40,30,10">
+        <TextBlock Text="  如果是主页出现问题，请在我们的 Github 仓库交 Issue 而不是在 PCL2 反馈交反馈（PCL2 它没错）" Padding="15,0,0,0" Margin="0,0,0,5" />
+        <TextBlock Text="  反馈地址（若无法打开请尝试使用 VP* 或加速器）：" Padding="15,0,0,0" Margin="0,0,0,5" />
+        <Border Margin="35,5,0,20" BorderBrush="{DynamicResource ColorBrush1}" BorderThickness="1" Background="{DynamicResource ColorBrush6}" CornerRadius="2">
+          <TextBox Text="https://github.com/WildBlockMC/WildBlock-PCL-Client/issues" FontSize="16" Height="25" />
+        </Border>
+      </StackPanel>
+    </local:MyCard>
+    <StackPanel Margin="0,10,0,20" HorizontalAlignment="Center" Orientation="Horizontal">
+      <local:MyButton Width="300" Height="35" Padding="13,0,13,0" Text="刷新" EventType="刷新主页" Margin="0,0,10,0" ToolTip="点击刷新主页" />    </StackPanel>
+    <Border Background="#A0FFFFFF" Height="20720" Margin="-25,10,-25,-20500" BorderThickness="0,2,0,0" BorderBrush="#AAAAAAAA">
+      <StackPanel Margin="40,15,0,10">
+        <TextBlock Text="Wild Block Client 主页" FontSize="16" Margin="0,5,5,5" />
+        <TextBlock Text="By：小怕Creeper_xiaopa" />
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+          <TextBlock Text="订阅地址: " />
+          <local:MyTextButton Margin="2" Text="https://raw.githubusercontent.com/WildBl……" EventType="复制文本" EventData="https://raw.githubusercontent.com/WildBlockMC/WildBlock-PCL-Client/main/homepage.xaml" ToolTip="点击复制到剪贴板" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+          <TextBlock Text="Github: " />
+          <local:MyTextButton Margin="2" Text="https://github.com/WildBlockMC" EventType="打开网页" EventData="https://github.com/WildBlockMC" ToolTip="点击打开Github" />
+        </StackPanel>
+        <Border Height="20500" Background="{DynamicResource ColorBrush7}" Opacity="0.3" Margin="-40,10,0,0">
+          <StackPanel>
+            <Grid Margin="0,7,0,15">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*">
+                </ColumnDefinition>
+                <ColumnDefinition Width="100">
+                </ColumnDefinition>
+                <ColumnDefinition Width="1*">
+                </ColumnDefinition>
+              </Grid.ColumnDefinitions>
+            </Grid>
+          </StackPanel>
+        </Border>
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</StackPanel>
