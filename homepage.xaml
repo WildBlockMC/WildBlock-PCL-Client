@@ -226,13 +226,24 @@
     </TextBlock>
       </Grid>
     </Border>
-	<local:MyCard Margin="0,0,0,12" Title="温馨提醒" CanSwap="False" IsSwaped="False">
+	<local:MyCard Margin="0,0,0,12" Title="温馨提醒" CanSwap="True" IsSwaped="False">
      <StackPanel Margin="24,40,24,15">
           <TextBlock HorizontalAlignment="Center" Margin="0,0,0,12" Foreground="{DynamicResource ColorBrush2}" FontSize="20"
                Text="今天已经是↓" />
           <Calendar HorizontalAlignment="Center" Margin="0,12,0,10" Grid.Column="0"/>
      </StackPanel>
-</local:MyCard>
+
+		</local:MyCard>
+
+			<local:MyCard Margin="0,0,0,15" Title="一键启动" CanSwap="True" IsSwaped="False">
+				<StackPanel Margin="24,40,24,15">
+			<local:MyButton Margin="0,4,0,10" Width="250" Height="35"
+			Text="一键启动客户端" EventType="启动游戏" EventData="1.16.5" />
+			<local:MyButton Margin="0,4,0,0" Width="250" Height="35"
+						Text="启动客户端并进入服务器" EventType="启动游戏" EventData="1.16.5|mc.xiaopa.eu.org" />
+				</StackPanel>
+		</local:MyCard>
+
     <local:MyCard Margin="0,0,0,15" Title="📢 主页如出现问题请在 Github 上交 Issue" CanSwap="True" IsSwaped="True">
       <StackPanel Margin="30,40,30,10">
         <TextBlock Text="  如果是主页出现问题，请在我们的 Github 仓库交 Issue 而不是在 PCL2 反馈交反馈（PCL2 它没错）" Padding="15,0,0,0" Margin="0,0,0,5" />
