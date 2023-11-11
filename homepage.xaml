@@ -1,6 +1,22 @@
+<!--
+ __        __ ___  _      ____        ____   _      ___    ____  _  __       ____  _      ___  _____  _   _  _____ 
+ \ \      / /|_ _|| |    |  _ \      | __ ) | |    / _ \  / ___|| |/ /      / ___|| |    |_ _|| ____|| \ | ||_   _|
+  \ \ /\ / /  | | | |    | | | |     |  _ \ | |   | | | || |    | ' /      | |    | |     | | |  _|  |  \| |  | |
+   \ V  V /   | | | |___ | |_| |     | |_) || |___| |_| || |___ | . \      | |___ | |___  | | | |___ | |\  |  | |
+    \_/\_/   |___||_____||____/      |____/ |_____|\___/  \____||_|\_\      \____||_____||___||_____||_| \_|  |_|
+
+                                 _   _   ___   __  __  _____  ____    _     ____  _____
+                                | | | | / _ \ |  \/  || ____||  _ \  / \   / ___|| ____|
+                                | |_| || | | || |\/| ||  _|  | |_) |/ _ \ | |  _ |  _|
+                                |  _  || |_| || |  | || |___ |  __// ___ \| |_| || |___
+                                |_| |_| \___/ |_|  |_||_____||_|  /_/   \_\\____||_____|
+
+				\-by Creeper_xiaopa-\
+
+-->
+
 <StackPanel>
   <StackPanel Margin="0,-10,0,0">
-    <!--Animations Starts-->
     <StackPanel.Triggers>
       <EventTrigger RoutedEvent="StackPanel.Loaded">
         <BeginStoryboard>
@@ -15,12 +31,7 @@
         </BeginStoryboard>
       </EventTrigger>
     </StackPanel.Triggers>
-    <!--Animations Ends-->
     <StackPanel.Resources>
-      <!--Template Starts-->
-      <!--Template Ends-->
-      <!--Styles Starts-->
-      <!--即将弃用-->
       <Style TargetType="Ellipse">
         <Setter Property="Fill" Value="{DynamicResource ColorBrush3}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
@@ -62,7 +73,6 @@
       <Style x:Key="Read0" TargetType="local:MyButton" BasedOn="{StaticResource Read}">
         <Setter Property="Grid.Column" Value="0" />
         <Setter Property="Text" Value="Minecraft Wiki" />
-        <!--<Setter Property="ColorType" Value="Highlight"/>-->
       </Style>
       <Style x:Key="Read0+" TargetType="local:MyButton" BasedOn="{StaticResource Read0}">
         <Setter Property="Grid.Row" Value="0" />
@@ -137,7 +147,6 @@
         <Setter Property="BorderThickness" Value="0,0,0,3" />
         <Setter Property="BorderBrush" Value="{DynamicResource ColorBrush2}" />
       </Style>
-      <!--h2-->
       <Style x:Key="h2" TargetType="TextBlock">
         <Setter Property="FontSize" Value="24" />
         <Setter Property="Padding" Value="15,5" />
@@ -145,7 +154,6 @@
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{DynamicResource ColorBrush3}" />
       </Style>
-      <!--h3-->
       <Style x:Key="h3" TargetType="TextBlock">
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Padding" Value="30,0" />
@@ -153,7 +161,6 @@
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{DynamicResource ColorBrush4}" />
       </Style>
-      <!--h4-->
       <Style x:Key="h4" TargetType="TextBlock">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="Padding" Value="30,0" />
@@ -161,7 +168,6 @@
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{DynamicResource ColorBrush4}" />
       </Style>
-      <!--footnote-->
       <Style x:Key="footnote" TargetType="TextBlock">
         <Setter Property="FontSize" Value="14" />
         <Setter Property="Padding" Value="30,0" />
@@ -169,8 +175,6 @@
         <Setter Property="Foreground" Value="#FF777777" />
         <Setter Property="TextWrapping" Value="Wrap" />
       </Style>
-      <!--ButtonNameBorder-->
-      <!--ImageButtonStyle-->
       <Style x:Key="ImgBtnImg" TargetType="Image">
         <Setter Property="MaxWidth" Value="70px" />
         <Setter Property="MaxHeight" Value="70px" />
@@ -197,7 +201,6 @@
         <Setter Property="FontSize" Value="12px" />
         <Setter Property="Margin" Value="8px,2px" />
       </Style>
-      <!-- TEMPLATES -->
       <ControlTemplate x:Key="Separator" TargetType="ContentControl">
         <Grid Margin="0,0,0,15">
           <Grid.ColumnDefinitions>
@@ -213,10 +216,10 @@
     </StackPanel.Resources>
     <Border Margin="0,0,0,10" Padding="2,8" BorderThickness="1" Background="{DynamicResource ColorBrush5}" CornerRadius="5" VerticalAlignment="Top" BorderBrush="{DynamicResource ColorBrush3}" Opacity="0.7">
       <Grid Margin="10,0,0,0">
-        <TextBlock x:Name="NewsHint" FontWeight="Bold" FontSize="12" VerticalAlignment="Center" Foreground="#FF000000">
+        <TextBlock x:Name="NewsHint" FontWeight="Bold" FontSize="12.3" VerticalAlignment="Center" Foreground="#FF000000">
                 ⚠️ "Wild Block Client" 是 MCJE 低规则生存服务器 "Wild Block" の PCL2 修改后客户端
     </TextBlock>
-        <TextBlock x:Name="Hint2" FontWeight="Bold" FontSize="12" VerticalAlignment="Center" Foreground="#00000000">
+        <TextBlock x:Name="Hint2" FontWeight="Bold" FontSize="12.3" VerticalAlignment="Center" Foreground="#00000000">
                 ⚠️ "Wild Block Client" 是 MCJE 低规则生存服务器 "Wild Block" の PCL2 修改后客户端
     </TextBlock>
       </Grid>
