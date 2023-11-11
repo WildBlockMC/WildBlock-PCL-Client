@@ -1,4 +1,5 @@
-<!--
+<!-- 
+
  __        __ ___  _      ____        ____   _      ___    ____  _  __       ____  _      ___  _____  _   _  _____ 
  \ \      / /|_ _|| |    |  _ \      | __ ) | |    / _ \  / ___|| |/ /      / ___|| |    |_ _|| ____|| \ | ||_   _|
   \ \ /\ / /  | | | |    | | | |     |  _ \ | |   | | | || |    | ' /      | |    | |     | | |  _|  |  \| |  | |
@@ -12,7 +13,7 @@
                                 |_| |_| \___/ |_|  |_||_____||_|  /_/   \_\\____||_____|
 
 	\-by Creeper_xiaopa-\
-
+	
 -->
 
 <StackPanel>
@@ -214,6 +215,7 @@
         </Grid>
       </ControlTemplate>
     </StackPanel.Resources>
+
     <Border Margin="0,0,0,10" Padding="2,8" BorderThickness="1" Background="{DynamicResource ColorBrush5}" CornerRadius="5" VerticalAlignment="Top" BorderBrush="{DynamicResource ColorBrush3}" Opacity="0.7">
       <Grid Margin="10,0,0,0">
         <TextBlock x:Name="NewsHint" FontWeight="Bold" FontSize="12.3" VerticalAlignment="Center" Foreground="#FF000000">
@@ -224,7 +226,14 @@
     </TextBlock>
       </Grid>
     </Border>
-    <local:MyCard Margin="0,0,0,15" Title="📢 主页如出现问题请在 Github 上交 Issue">
+	<local:MyCard Margin="0,0,0,12" Title="温馨提醒" CanSwap="True" IsSwaped="False">
+     <StackPanel Margin="24,40,24,15">
+          <TextBlock HorizontalAlignment="Center" Margin="0,0,0,12" Foreground="{DynamicResource ColorBrush2}" FontSize="20"
+               Text="今天已经是↓" />
+          <Calendar HorizontalAlignment="Center" Margin="0,12,0,10" Grid.Column="0"/>
+     </StackPanel>
+</local:MyCard>
+    <local:MyCard Margin="0,0,0,15" Title="📢 主页如出现问题请在 Github 上交 Issue" CanSwap="True" IsSwaped="True">
       <StackPanel Margin="30,40,30,10">
         <TextBlock Text="  如果是主页出现问题，请在我们的 Github 仓库交 Issue 而不是在 PCL2 反馈交反馈（PCL2 它没错）" Padding="15,0,0,0" Margin="0,0,0,5" />
         <TextBlock Text="  反馈地址（若无法打开请尝试使用 VP* 或加速器）：" Padding="15,0,0,0" Margin="0,0,0,5" />
@@ -233,8 +242,8 @@
         </Border>
       </StackPanel>
     </local:MyCard>
-    <StackPanel Margin="0,10,0,20" HorizontalAlignment="Center" Orientation="Horizontal">
-      <local:MyButton Width="400" Height="35" Padding="13,0,13,0" Text="刷新" EventType="刷新主页" Margin="0,0,10,0" ToolTip="点击刷新主页" />    </StackPanel>
+
+    <StackPanel Margin="0,10,0,20" HorizontalAlignment="Center" Orientation="Horizontal"></StackPanel>
     <Border Background="#A0FFFFFF" Height="20720" Margin="-25,10,-25,-20500" BorderThickness="0,2,0,0" BorderBrush="#AAAAAAAA">
       <StackPanel Margin="40,15,0,10">
         <TextBlock Text="Wild Block Client 主页" FontSize="16" Margin="0,5,5,5" />
@@ -247,6 +256,8 @@
           <TextBlock Text="Github: " />
           <local:MyTextButton Margin="2" Text="https://github.com/WildBlockMC" EventType="打开网页" EventData="https://github.com/WildBlockMC" ToolTip="点击打开Github" />
         </StackPanel>
+				<TextBlock Text="" />
+		      <local:MyButton Width="400" Height="35" Padding="13,0,13,0" Text="刷新主页" EventType="刷新主页" Margin="0,0,10,0" ToolTip="点击刷新主页" />    
         <Border Height="20500" Background="{DynamicResource ColorBrush7}" Opacity="0.3" Margin="-40,10,0,0">
           <StackPanel>
             <Grid Margin="0,7,0,15">
@@ -257,8 +268,11 @@
                 </ColumnDefinition>
                 <ColumnDefinition Width="1*">
                 </ColumnDefinition>
-              </Grid.ColumnDefinitions>
-            </Grid>
+              </Grid.ColumnDefinitions>         
+			<Line X1="0" X2="100" Stroke="{DynamicResource ColorBrush3}" StrokeThickness="1.5" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="0" />
+              <TextBlock Text="没 有 更 多 了" HorizontalAlignment="Center" FontSize="14" Foreground="{DynamicResource ColorBrush4}" Grid.Column="1" VerticalAlignment="Center" />
+              <Line X1="0" X2="100" Stroke="{DynamicResource ColorBrush3}" StrokeThickness="1.5" HorizontalAlignment="Center" Stretch="Fill" Grid.Column="2" /> 
+			  </Grid>
           </StackPanel>
         </Border>
       </StackPanel>
