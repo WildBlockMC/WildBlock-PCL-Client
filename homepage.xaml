@@ -226,7 +226,7 @@
     </TextBlock>
       </Grid>
     </Border>
-	<local:MyCard Margin="0,0,0,12" Title="温馨提醒" CanSwap="True" IsSwaped="False">
+	<local:MyCard Margin="0,0,0,12" Title="温馨提醒" CanSwap="False" IsSwaped="False">
      <StackPanel Margin="24,40,24,15">
           <TextBlock HorizontalAlignment="Center" Margin="0,0,0,12" Foreground="{DynamicResource ColorBrush2}" FontSize="20"
                Text="今天已经是↓" />
