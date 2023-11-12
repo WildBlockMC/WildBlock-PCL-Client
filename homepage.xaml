@@ -238,9 +238,9 @@
 			<local:MyCard Margin="0,0,0,15" Title="一键启动" CanSwap="True" IsSwaped="False">
 				<StackPanel Margin="24,40,24,15">
 			<local:MyButton Margin="0,4,0,10" Width="250" Height="35"
-			Text="一键启动客户端" EventType="启动游戏" EventData="1.16.5" />
+			Text="一键启动客户端" EventType="启动游戏" EventData="Client 1.16.5" />
 			<local:MyButton Margin="0,4,0,0" Width="250" Height="35"
-						Text="启动客户端并进入服务器" EventType="启动游戏" EventData="1.16.5|mc.xiaopa.eu.org" />
+						Text="启动客户端并进入服务器" EventType="启动游戏" EventData="Client 1.16.5|mc.xiaopa.eu.org" />
 				</StackPanel>
 		</local:MyCard>
 
