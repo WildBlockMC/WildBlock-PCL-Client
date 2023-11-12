@@ -261,7 +261,7 @@
         <TextBlock Text="By：小怕Creeper_xiaopa" />
         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
           <TextBlock Text="订阅地址: " />
-          <local:MyTextButton Margin="2" Text="https://raw.githubusercontent.com/WildBl……" EventType="复制文本" EventData="https://raw.githubusercontent.com/WildBlockMC/WildBlock-PCL-Client/main/homepage.xaml" ToolTip="点击复制到剪贴板" />
+          <local:MyTextButton Margin="2" Text="https://raw.githubusercontent.com/WildBl……" EventType="复制文本" EventData="https://raw.githubusercontent.com/WildBlockMC/WildBlock-PCL-Client/main/mainpage.xaml" ToolTip="点击复制到剪贴板" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
           <TextBlock Text="Github: " />
